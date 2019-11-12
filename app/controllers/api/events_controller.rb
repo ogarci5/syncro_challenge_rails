@@ -1,4 +1,4 @@
-class Api::EventsController < ApplicationController
+class Api::EventsController < ApiController
   def index
     @metrics = Metric.where(**metric_params)
     total = @metrics.count

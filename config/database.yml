@@ -10,16 +10,16 @@ default: &default
 
 development:
   <<: *default
-  database: syncro_challenge_development
+  database: <%= ENV.fetch("DATABASE_NAME", "syncro_challenge_development") %>
 
 test:
   <<: *default
-  database: syncro_challenge_test
+  database: <%= ENV.fetch("DATABASE_NAME", "syncro_challenge_test") %>
 
 staging:
   <<: *default
-  database: syncro_challenge_staging
+  database: <%= ENV.fetch("DATABASE_NAME", "syncro_challenge_staging") %>
 
 production:
   <<: *default
-  database: syncro_challenge_production
+  database: <%= ENV.fetch("DATABASE_NAME", "syncro_challenge_production") %>

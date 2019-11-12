@@ -7,7 +7,11 @@ class Metric < ApplicationRecord
 
   def self.chart_data(category:)
     category ||= self.first.category
-    metrics = self.all.select { |metric| metric.category == category }.uniq
-    metrics.map(&:value).uniq.map { |value| { name: value, value: metrics.select { |m| m.value == value }.count } }
+    metrics = Metric.from_category(category)
+    values = metrics.distinct.pluck(:value)
+    values = values.first(10) if values.count > 10
+    # This can be optimized in the SQL statement
+    # By either grouping and subquerying
+    values.map { |value| { name: value, value: metrics.where(value: value).count } }
   end
 end

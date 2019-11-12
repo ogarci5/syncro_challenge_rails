@@ -1,23 +1,33 @@
 import React from "react"
 import PropTypes from "prop-types"
+import { MetricChart } from "./MetricChart.js"
+import { MetricNavigation } from "./MetricNavigation.js"
+import {Nav, NavItem, NavLink} from "reactstrap";
+
 class Metrics extends React.Component {
   render () {
     return (
-      <div>
-        <h1>Metrics</h1>
-        <ul>
-          {this.props.metrics.map(metric => (
-            <li key={metric.id}>
-              {`${metric.category} = ${metric.value}`}
-            </li>
-          ))}
-        </ul>
+      <div className="container pt-5">
+        <div className="row">
+          <h1>Reports</h1>
+        </div>
+        <div className="row pt-5">
+          <div className="col-md-2">
+            <MetricNavigation categories={this.props.categories} />
+          </div>
+          <div className="col-md-10">
+            <MetricChart name={this.props.category} data={this.props.data} />
+            <hr />
+          </div>
+        </div>
       </div>
     );
   }
 }
 
 Metrics.propTypes = {
-  metrics: PropTypes.array
+  categories: PropTypes.array,
+  category: PropTypes.string,
+  data: PropTypes.array
 };
 export default Metrics

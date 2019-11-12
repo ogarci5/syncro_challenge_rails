@@ -2,7 +2,6 @@ import React from "react"
 import PropTypes from "prop-types"
 import { MetricChart } from "./MetricChart.js"
 import { MetricNavigation } from "./MetricNavigation.js"
-import {Nav, NavItem, NavLink} from "reactstrap";
 
 class Metrics extends React.Component {
   render () {

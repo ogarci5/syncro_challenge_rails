@@ -23,3 +23,5 @@ export class MetricNavigation extends React.Component {
 MetricNavigation.propTypes = {
   categories: PropTypes.array
 };
+
+export default MetricNavigation

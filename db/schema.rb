@@ -12,14 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2019_11_12_173541) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "metrics", force: :cascade do |t|
     t.string "category"
     t.string "value"
-    t.string "machine_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.uuid "machine_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["category"], name: "index_metrics_on_category"
-    t.index ["machine_id"], name: "index_metrics_on_machine_id"
   end
 
 end

@@ -1,4 +1,4 @@
 class Metric < ApplicationRecord
-  validate :category, presence: true
-  validate :machine_id, presence: true
+  validates :category, presence: true
+  validates :machine_id, presence: true
 end

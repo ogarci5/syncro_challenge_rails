@@ -3,27 +3,39 @@
     <h1>Reports</h1>
   </div>
   <div class="row pt-5">
+
     <div class="col-md-3">
       <%= react_component('MetricNavigation', @metrics_component.slice(:categories)) %>
     </div>
     <div class="col-md-9">
-      <%= react_component('MetricChart', @metrics_component.slice(:category, :data)) %>
-      <h3>Data</h3>
-      <table class="table">
-        <thead>
+      <% if params[:category].present? %>
+        <%= react_component('MetricChart', @metrics_component.slice(:category, :data)) %>
+        <h3>Summary</h3>
+        <%= form_tag root_path, class: 'form-inline', method: :get do %>
+          <div class="form-group mx-sm-3 mb-2">
+            <%= hidden_field_tag 'category', params[:category], class: 'form-control' %>
+            <%= text_field_tag 'search', nil, class: 'form-control', placeholder: 'machine_id' %>
+          </div>
+          <button type="submit" class="btn btn-primary mb-2">Search</button>
+        <% end %>
+        <table class="table">
+          <thead>
           <th>Machine ID</th>
           <th>Value</th>
-        </thead>
-        <tbody>
-        <% @metrics.each do |metric| %>
-          <tr>
-            <td><%= metric.machine_id %></td>
-            <td><%= metric.value %></td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-      <%= will_paginate @metrics %>
+          </thead>
+          <tbody>
+          <% @metrics.each do |metric| %>
+            <tr>
+              <td><%= metric.machine_id %></td>
+              <td><%= metric.value %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <%= will_paginate @metrics %>
+      <% else %>
+        <h3>Please select a category.</h3>
+      <% end %>
     </div>
   </div>
 </div>

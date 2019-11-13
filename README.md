@@ -38,3 +38,6 @@ $ curl -X "GET" -H "X-API-Key: EXAMPLE_KEY" -H "Content-Type: application/json" 
 $ curl -X "POST" -H "X-API-Key: EXAMPLE_KEY" -H "Content-Type: application/json" -d '{"category":"os_version"}' "127.0.0.1:3000/api/events"
 {"status":"error","errors":["Machine can't be blank"]}
 ```
+
+### Screenshot
+![image](https://user-images.githubusercontent.com/1848121/68791873-ceade380-060f-11ea-9c0f-26bfc18737c2.png)

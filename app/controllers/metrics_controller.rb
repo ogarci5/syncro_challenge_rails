@@ -4,7 +4,7 @@ class MetricsController < ApplicationController
     @metrics_component = {
       categories: Metric.categories,
       category: params[:category] || '',
-      data: Metric.chart_data(category: params[:category])
+      data: Metric.statistics(category: params[:category])
     }
   end
 end

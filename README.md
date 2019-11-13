@@ -16,6 +16,8 @@ and separately to reload the views and ease development
 ./bin/webpack-dev-server
 ```
 
+Make sure to use the provided `.env.sample` file and rename it to `.env` and fill with the correct environment variables.
+
 ### API
 
 The API allows to us to record events and returns statistics for them and can be reached at the following
